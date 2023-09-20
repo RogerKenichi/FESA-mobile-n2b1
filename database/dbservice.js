@@ -8,27 +8,19 @@ export function getDbConnection() {
 
 export async function createTable() {
     return new Promise((resolve, reject) => {
-        const query = `
-        
+        const query = `        
         CREATE TABLE IF NOT EXISTS tbProdutos
         (
             id TEXT not null primary key,
             descricao TEXT not null,
             preco TEXT not null          
         );
-        CREATE TABLE IF NOT EXISTS tbCarrinho
+        CREATE TABLE IF NOT EXISTS tbVendaProduto
         (
-            id_carrinho TEXT not null primary key,
-            id_produto TEXT,
-            quantidade INTEGER,
-            FOREIGN KEY (id_produto) REFERENCES tbProdutos(id)      
-        );
-        CREATE TABLE IF NOT EXISTS tbCarrinhoProdutos
-        (
-            fk_carrinho TEXT 
+            fk_vendas TEXT 
             fk_produto TEXT,
             quantidade INTEGER,
-            FOREIGN KEY (fk_carrinho) REFERENCES tbCarrinho(id_carrinho),
+            FOREIGN KEY (fk_vendas) REFERENCES tbVendas(id_vendas),
             FOREIGN KEY (fk_produto) REFERENCES tbProdutos(id)
         );
         CREATE TABLE IF NOT EXISTS tbVendas
@@ -46,7 +38,7 @@ export async function createTable() {
         DROP TABLE IF EXISTS tbCarrinho;
         DROP TABLE IF EXISTS tbCarrinhoProdutos;
         DROP TABLE IF EXISTS tbVendas;
-        
+
         */
         
 
@@ -98,6 +90,35 @@ export function obtemTodosProdutos() {
     }
     );
 }
+
+
+export function obtemProduto(idProduto) {
+    return new Promise((resolve, reject) => {
+      console.log('Obtendo produto');
+      let dbCx = getDbConnection();
+      dbCx.transaction(tx => {
+        let query = 'SELECT * FROM tbProdutos WHERE id=?';
+        tx.executeSql(query, [idProduto], (tx, registros) => {
+          if (registros.rows.length === 1) {
+            // Se houver uma única linha de resultado, retorne-a
+            const produto = registros.rows.item(0);
+            resolve({
+              id: produto.id,
+              descricao: produto.descricao,
+              preco: produto.preco
+            });
+          } else {
+            // Se nenhum registro ou mais de um registro for encontrado, retorne null
+            resolve(null);
+          }
+        });
+      }, error => {
+        console.log(error);
+        resolve(null);
+      });
+    });
+  }
+
 
 export function adicionaProdutos(produto) {
 
