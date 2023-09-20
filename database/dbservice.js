@@ -8,12 +8,47 @@ export function getDbConnection() {
 
 export async function createTable() {
     return new Promise((resolve, reject) => {
-        const query = `CREATE TABLE IF NOT EXISTS tbProdutos
+        const query = `
+        
+        CREATE TABLE IF NOT EXISTS tbProdutos
         (
-            id text not null primary key,
-            descricao text not null,
-            preco text not null          
-        )`;
+            id TEXT not null primary key,
+            descricao TEXT not null,
+            preco TEXT not null          
+        );
+        CREATE TABLE IF NOT EXISTS tbCarrinho
+        (
+            id_carrinho TEXT not null primary key,
+            id_produto TEXT,
+            quantidade INTEGER,
+            FOREIGN KEY (id_produto) REFERENCES tbProdutos(id)      
+        );
+        CREATE TABLE IF NOT EXISTS tbCarrinhoProdutos
+        (
+            fk_carrinho TEXT 
+            fk_produto TEXT,
+            quantidade INTEGER,
+            FOREIGN KEY (fk_carrinho) REFERENCES tbCarrinho(id_carrinho),
+            FOREIGN KEY (fk_produto) REFERENCES tbProdutos(id)
+        );
+        CREATE TABLE IF NOT EXISTS tbVendas
+        (
+            id_vendas TEXT not null primary key,
+            fk_carrinho TEXT,
+            data_venda DATE,
+            FOREIGN KEY (fk_carrinho) REFERENCES tbCarrinho(id_carrinho),  
+        );
+        `;
+
+        /*
+        
+        DROP TABLE IF EXISTS tbProdutos;
+        DROP TABLE IF EXISTS tbCarrinho;
+        DROP TABLE IF EXISTS tbCarrinhoProdutos;
+        DROP TABLE IF EXISTS tbVendas;
+        
+        */
+        
 
         let dbCx = getDbConnection();        
         

@@ -6,7 +6,7 @@
     "orientation": "portrait",
     "icon": "./assets/contact.png",
     "splash": {
-      "image": "./assets/contact-128.png",
+      "image": "./assets/splash-screen-akashi-1.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
@@ -21,7 +21,7 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/contact.png",
+        "foregroundImage": "./assets/splash-screen-akashi-1.png",
         "backgroundColor": "#FFFFFF"
       },
       "package": "AgendaContatos.apk"

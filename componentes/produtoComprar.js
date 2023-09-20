@@ -8,7 +8,8 @@ import { Ionicons, Entypo, AntDesign } from '@expo/vector-icons';
 // <Image source={iconTelefone} style={styles.iconTelefone} />
 
 
-export default function ProdutoComprar({produto}) {
+export default function ProdutoComprar({produto, adicionarCarrinho}) {
+
     return (
         <View style={styles.produto} >
 

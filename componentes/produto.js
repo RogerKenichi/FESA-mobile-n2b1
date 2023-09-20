@@ -21,11 +21,11 @@ export default function Produto({produto, removerElemento, editar}) {
 
             <View style={styles.dadosBotoesAcao}>
                 <TouchableOpacity onPress={() => removerElemento(produto.id)}>
-                    <Ionicons descricao="md-remove-circle" size={32} color="red" />
+                    <Ionicons name="md-remove-circle" size={32} color="red" />
                 </TouchableOpacity>
 
                 <TouchableOpacity onPress={() => editar(produto.id)}>
-                    <Entypo descricao="edit" size={32} color="black" />
+                    <Entypo name="edit" size={32} color="black" />
                 </TouchableOpacity>
 
             </View>
