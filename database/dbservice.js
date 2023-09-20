@@ -30,8 +30,6 @@ export async function createTable() {
             FOREIGN KEY (fk_vendas) REFERENCES tbVendas(id_vendas),
             FOREIGN KEY (fk_produto) REFERENCES tbProdutos(id)
         )`
-        
-        
 
         let dbCx = getDbConnection();        
         
@@ -39,9 +37,6 @@ export async function createTable() {
             tx.executeSql(query);
             tx.executeSql(queryTbVenda);
             tx.executeSql(queryTbVendaProduto);
-            /*tx.executeSql(`INSERT INTO tbProdutos VALUES ('asdasd', 'Caça Mitsubishi A6M2 Zero', '2500.00'`);
-            tx.executeSql(`INSERT INTO tbProdutos VALUES ('akhfas', 'Bombardeiro Aichi D2Y', '3000.00')'`);
-            tx.executeSql(`INSERT INTO tbProdutos VALUES ('iauyfd', 'Torpedeiro Nakajima B5N2', '2900.00')'`);*/
             resolve(true); 
         },
             error => {
@@ -335,36 +330,6 @@ export function obterTodosOsProdutosDaVenda(idVenda) {
                             id: registros.rows.item(n).id,
                             descricao: registros.rows.item(n).descricao,
                             preco: registros.rows.item(n).preco
-                        }
-                        retorno.push(obj);
-                    }
-                    resolve(retorno);
-                })
-        },
-            error => {
-                console.log(error);
-                resolve([]);
-            }
-        )
-    }
-    );
-}
-
-export function experimento(idVenda) {
-
-    return new Promise((resolve, reject) => {
-
-        let dbCx = getDbConnection();
-        dbCx.transaction(tx => {
-            let query = 'SELECT * FROM tbVendaProduto WHERE fk_vendas = ?';
-            tx.executeSql(query, [idVenda],
-                (tx, registros) => {
-
-                    var retorno = []
-
-                    for (let n = 0; n < registros.rows.length; n++) {
-                        let obj = {
-                            fk_vendas: registros.rows.item(n).fk_vendas,
                         }
                         retorno.push(obj);
                     }

@@ -21,8 +21,9 @@ const styles = StyleSheet.create({
     },
     botaoVoltar:{
         width: 120,
-        height: 60,
+        height: 35,
         backgroundColor: '#c0ced1',
+        borderRadius: 5,
         justifyContent: 'center',
         alignItems: 'center'
     },
@@ -66,7 +67,7 @@ const styles = StyleSheet.create({
     },
     containerCadastro: {
         flex: 1,
-        backgroundColor: '#fff',
+        backgroundColor: '#a4d1af',
         alignItems: 'center',
         justifyContent: 'center',
         marginTop: 50,
@@ -74,7 +75,7 @@ const styles = StyleSheet.create({
     tituloCadastro: {
         fontSize: 25,
         color: '#FFF',
-        backgroundColor: 'blue',
+        backgroundColor: '#d97b8b',
         width: '100%',
         textAlign: 'center'
     },
@@ -82,20 +83,20 @@ const styles = StyleSheet.create({
     caixaTextoCadastro: {
         borderColor: "#000",
         borderWidth: 2,
-        height: 50,
+        height: 35,
         width: '100%',
         paddingHorizontal: 10,
         borderRadius: 10,
     },
     botaoCadastro: {
         width: '30%',
-        height: 50,
-        borderColor: "#000",
+        height: 35,
+        borderColor: '#6fa47c',
         borderWidth: 2,
-        borderRadius: 30,
+        borderRadius: 8,
         alignItems: 'center',
         justifyContent: 'center',
-        backgroundColor: '#040d59',
+        backgroundColor: '#a4d1af',
     },
     botaoApagarTudo: {
         backgroundColor: 'red',
@@ -109,7 +110,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-around',
         width: '100%',
-        marginTop: 30,
+        marginTop: 10,
     },
     textoBotaoCadastro: {
         color: '#FFF',
@@ -124,7 +125,7 @@ const styles = StyleSheet.create({
     listaProdutos: {
         width: '100%',
         height: '100%',
-        backgroundColor: '#FFF',
+        backgroundColor: '#e9f8ed',
         marginTop: 20,
     },
     produto: {
@@ -165,6 +166,43 @@ const styles = StyleSheet.create({
         color: "#FFF",
         fontSize: 18,
     },
+
+
+    botaoHome:{
+        width: 280,
+        height: 60,
+        backgroundColor: '#c0ced1',
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginBottom: 30,
+
+        paddingVertical: 12,
+        paddingHorizontal: 24,
+        fontSize: 16,
+        textAlign: 'center',
+        backgroundColor: '#d97b8b', // Cor de fundo do botão (azul)
+        color: '#fff', // Cor do texto do botão (branco)
+        borderRadius: 12,
+    },
+
+    homeContainer: {
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'center',
+        backgroundColor: '#a4d1af',
+    },
+
+    homeText: {
+        color: 'white',
+        fontSize: 18
+    },
+
+    imagemCima: {
+        height: 200,
+        width: 200,
+    }
+
+
   });
   
   export default styles;

@@ -175,7 +175,7 @@ export default function Tela1({ navigation }) {
           <View style={styles.areaDadosCadastro}>
   
             <View style={styles.areaDescricao}>
-              <Text>Descrição</Text>
+              <Text>Descrição do produto</Text>
               <TextInput style={styles.caixaTextoCadastro}
                 onChangeText={(texto) => setDescricao(texto)}
                 value={descricao} />
