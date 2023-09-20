@@ -1,6 +1,9 @@
 import { useState, useEffect, react } from 'react';
 import { Text, View, TouchableOpacity, ScrollView, Alert } from 'react-native';
 import styles from '../css/styles';
+import {
+    adicionaVenda
+} from '../database/dbservice';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import ProdutoCarrinho from '../componentes/produtoCarrinho';
 
@@ -55,7 +58,30 @@ export default function ConfirmarCompra({navigation}){
       }
 
     function finalizarCompra() {
+        if(carrinhoFinal.length <= 0 || carrinhoFinal === undefined) {
+            Alert.alert('Seu carrinho está vazio');
+            return;
+        }
+
+        let valorVendaTotal = 0;
+        for(let i = 0; i < carrinhoFinal.length; i++) {
+            valorVendaTotal += parseFloat(carrinhoFinal[i].preco);
+        }
+
+        let objVenda = {
+            id_vendas: createUniqueId(),
+            data_venda: Date(Date.now()),
+            valorTotal: valorVendaTotal
+        }
+
+        const novoCarrinho = [...carrinhoFinal];
+        adicionaVenda(objVenda, novoCarrinho)
+
         navigation.navigate('CompraFinalizada');
+    }
+
+    function createUniqueId() {
+      return Date.now().toString(36) + Math.random().toString(36).slice(0, 2);
     }
 
     return (

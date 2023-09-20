@@ -13,6 +13,7 @@ import Tela2 from './Telas/telaCompra';
 import Tela3 from './Telas/telaVendas';
 import ConfirmarCompra from './Telas/telaConfirmarCompra';
 import CompraFinalizada from './Telas/telaCompraFinalizada';
+import VendaDetalhe from './Telas/telaVendaDetalhe';
 
 const Routes = createAppContainer(
   createSwitchNavigator({
@@ -22,6 +23,7 @@ const Routes = createAppContainer(
     Tela3,
     ConfirmarCompra,
     CompraFinalizada,
+    VendaDetalhe,
   })
 );
 

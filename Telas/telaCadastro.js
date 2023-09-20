@@ -15,6 +15,8 @@ import {
   alteraProdutos,
   excluiProdutos,
   excluiTodosProdutos,
+  createTableVenda,
+  createTableVendaProduto
 } from '../database/dbservice';
 
 export default function Tela1({ navigation }) {
@@ -30,6 +32,8 @@ export default function Tela1({ navigation }) {
       console.log("Verificando necessidade de criar tabelas...");
       tabelasCriadas = true;
       await createTable();
+      await createTableVenda();
+      await createTableVendaProduto();
     }
 
     console.log("UseEffect...");
